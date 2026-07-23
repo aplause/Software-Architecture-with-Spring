@@ -1,0 +1,26 @@
+
+* start services from chapter 10
+docker run -d \
+  --name etl-auction-batch-process \
+  -p 8081:8080 \
+  -e SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/auction_db \
+  -e SPRING_DATASOURCE_USERNAME=auction_app \
+  -e SPRING_DATASOURCE_PASSWORD=auction123 \
+  etl-auction-batch-process:0.0.1-SNAPSHOT
+
+docker run -d --name product-services -p 8082:8080 \
+    -e SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/auction_db \
+    -e SPRING_DATASOURCE_USERNAME=auction_app \
+    -e SPRING_DATASOURCE_PASSWORD=auction123 \
+    product-services:0.0.1-SNAPSHOT
+
+
+* UI tool for postgres 
+
+ docker run -d --name dbgate --network local -p 3000:3000 dbgate/dbgate
+
+* check port on dockerhost
+ ss -tulpn | grep 5432
+
+* gate on docker - to access postgres
+ 172.17.0.1:5432 - postgres in docker
