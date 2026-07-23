@@ -82,7 +82,6 @@
                     <docker>
                         <host>unix:///var/run/docker.sock</host>
                     </docker>
-
                 </configuration>
             </plugin>
         </plugins>
