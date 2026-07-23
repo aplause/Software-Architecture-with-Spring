@@ -6,3 +6,7 @@ docker run -d \
   -e SPRING_DATASOURCE_USERNAME=auction_app \
   -e SPRING_DATASOURCE_PASSWORD=auction123 \
   etl-auction-batch-process
+
+
+
+ docker run -d --name dbgate --network local -p 3000:3000 dbgate/dbgate
